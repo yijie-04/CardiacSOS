@@ -1,0 +1,150 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card card-chart">
+                    <div class="card-header">
+                        <h4 class="card-category">Audio to text</h4>
+                        <h2 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> Syndrom Description</h2>
+                    </div>
+                    <div class="card-body">
+                        <p id="status">Connection status will go here</p>
+                        <p id="transcript"></p>
+                        <script> const socket = new WebSocket('ws://localhost:8000/listen')</script>
+                        <script>
+                            navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
+                            const mediaRecorder = new MediaRecorder(stream)
+                            })
+                        </script>
+                        <script>
+
+                        socket.onopen = () => {
+                            document.querySelector('#status').textContent = 'Connected'
+                            console.log({
+                                event: 'onopen'
+                            })
+                            mediaRecorder.addEventListener('dataavailable', async (event) => {
+                                if (event.data.size > 0 && socket.readyState == 1) {
+                                    socket.send(event.data)
+                                }
+                            })
+                            mediaRecorder.start(250)
+                        }
+
+                        socket.onmessage = (message) => {
+                            const received = message.data
+                            if (received) {
+                                console.log(received)
+                                document.querySelector('#transcript').textContent += ' ' + received
+                            }
+                        }
+
+                        socket.onclose = () => {
+                            console.log({
+                                event: 'onclose'
+                            })
+                        }
+
+                        socket.onerror = (error) => {
+                            console.log({
+                                event: 'onerror',
+                                error
+                            })
+                        }
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card card-chart">
+                    <div class="card-header">
+                        <h5 class="card-category">AI agent Prediction</h5>
+                        <h2 class="card-title"><i class="tim-icons icon-delivery-fast text-info"></i> Possible Diseases</h2>
+                    </div>
+                    <div class="card-body">
+                        <li class="list-unstyled">
+                            <ul>
+                                <li> <b>Atrial Fibrillation (AF) </b>: Electrocardiogram (ECG) to confirm irregular rhythm, echocardiography to assess cardiac function, blood tests to evaluate thyroid function and electrolyte levels. </li>
+                                <li> <b>Perioperative Myocardial Infarction (MI) </b>: Cardiac enzymes (e.g., troponin) monitoring, ECG changes indicative of ischemia, echocardiography to assess cardiac function and wall motion abnormalities </li>
+                            </ul>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-lg-4">
+                <div class="card card-chart">
+                    <div class="card-header">
+                        <h5 class="card-category"><b>Patient Record</b></h5>
+                        <h2 class="card-title"><i class="tim-icons icon-send text-success"></i> James Johnson</h2>
+                    </div>
+                    <div class="card-body">
+                    <li class="list-unstyled">
+                        <ul>
+                            <li>Date of Birth: 1963-07-19 </li>
+                            <li>Gender: Male </li>
+                            <li>Weight: 80</li>
+                            <li>Contact Number: 259-495-6398</li>
+                            <li>Date Last Visit: 2022-04-14</li>
+                            <li>Diagnosis: Coronary Artery Bypass Grafting (CABG)</li>
+                            <li>Note: Allergies to aspirin and other NSAIDs</li>
+                            <li>Emergency Contact: Eliza Johnson, 563-496-7136</li>
+                        </ul>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="card">
+            <div class="card-body">
+                <div class="places-buttons">
+                <div class="row">
+                    <div class="col-md-6 ml-auto mr-auto text-center">
+                    <h3 class="card-title">
+                        Remote Emergency Drug Delivery
+                        <p class="category">dose adjustment</p>
+                    </h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 ml-auto mr-auto">
+                    <div class="row">
+                        <div class="col-md-4">
+                        <button class="btn btn-primary btn-block" onclick="demo.showNotification1('top','right')">Adenosine-0.5mg</button>
+                        </div>
+                        <div class="col-md-4">
+                        <button class="btn btn-primary btn-block" onclick="demo.showNotification2('top','right')">Heparin-60unit/kg</button>
+                        </div>
+                        <div class="col-md-4">
+                        <button class="btn btn-primary btn-block" onclick="demo.showNotification3('top','right')">Epinephrine-0.01mg/kg</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script>
+    $(document).ready(function () {
+        // Javascript method's body can be found in assets/js/demos.js
+        demo.initDashboardPageCharts();
+
+    });
+</script>
+
+{% endblock javascripts %}

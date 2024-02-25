@@ -1,0 +1,189 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Tables {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+  <div class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card ">
+          <div class="card-header">
+            <h1 class="card-title"> Patient List</h1>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table tablesorter " id="">
+                <thead class=" text-primary">
+                  <tr>
+                    <th>Patient ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>DOB</th>
+                    <th>Gender</th>
+                    <th>Weight</th>
+                    <th>Contact Number</th>
+                    <th>Date of Last Visit</th>
+                    <th>Diagnosis</th>
+                    <th>Notes</th>
+                    <th>Emergency Contact</th>
+                    <th>Emergency Number</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>10000</td>
+                    <td>Charlotte</td>
+                    <td>Anderson</td>
+                    <td>1955-01-09</td>
+                    <td>F</td>
+                    <td>58</td>
+                    <td>366-346-3030</td>
+                    <td>2021-10-31</td>
+                    <td>Chronic Heart Failure with Reduced Ejection Fraction (HFrEF)</td>
+                    <td>Allergic to peanuts</td>
+                    <td>John Anderson</td>
+                    <td>588-505-2398</td>
+                </tr>
+                <tr>
+                    <td>10001</td>
+                    <td>William</td>
+                    <td>Taylor</td>
+                    <td>1958-01-14</td>
+                    <td>M</td>
+                    <td>78</td>
+                    <td>829-981-4691</td>
+                    <td>2023-05-12</td>
+                    <td>Acute Decompensated Heart Failure (ADHF)</td>
+                    <td></td>
+                    <td>Autumn Taylor</td>
+                    <td>688-341-2279</td>
+                </tr>
+                <tr>
+                    <td>10002</td>
+                    <td>James</td>
+                    <td>Johnson</td>
+                    <td>1963-07-19</td>
+                    <td>M</td>
+                    <td>80</td>
+                    <td>259-495-6398</td>
+                    <td>2022-04-14</td>
+                    <td>Coronary Artery Bypass Grafting (CABG)</td>
+                    <td>Allergies to aspirin and other NSAIDs</td>
+                    <td>Eliza Johnson</td>
+                    <td>563-496-7136</td>
+                </tr>
+                <tr>
+                    <td>10003</td>
+                    <td>Elijah</td>
+                    <td>Jackson</td>
+                    <td>2000-06-30</td>
+                    <td>M</td>
+                    <td>64</td>
+                    <td>631-179-2407</td>
+                    <td>2023-07-10</td>
+                    <td>Right-Sided Heart Failure</td>
+                    <td></td>
+                    <td>Elise Smith</td>
+                    <td>507-702-6345</td>
+                </tr>
+                <tr>
+                    <td>10004</td>
+                    <td>Olivia</td>
+                    <td>Wilson</td>
+                    <td>2006-02-04</td>
+                    <td>F</td>
+                    <td>44</td>
+                    <td>571-980-6799</td>
+                    <td>2022-04-14</td>
+                    <td>Ischemic Heart Failure</td>
+                    <td></td>
+                    <td>Adeline Wilson</td>
+                    <td>970-257-8180</td>
+                </tr>
+                <tr>
+                    <td>10005</td>
+                    <td>Sophia</td>
+                    <td>Miller</td>
+                    <td>1999-12-27</td>
+                    <td>F</td>
+                    <td>59</td>
+                    <td>855-184-6174</td>
+                    <td>2022-04-14</td>
+                    <td>Right-Sided Heart Failure</td>
+                    <td>Allergies to aspirin and other NSAIDs</td>
+                    <td>Jack Miller</td>
+                    <td>766-494-4682</td>
+                </tr>
+                <tr>
+                    <td>10006</td>
+                    <td>Harper</td>
+                    <td>Wang</td>
+                    <td>1958-01-07</td>
+                    <td>F</td>
+                    <td>76</td>
+                    <td>193-829-1738</td>
+                    <td>2022-04-14</td>
+                    <td>Chronic Heart Failure with Reduced Ejection Fraction (HFrEF)</td>
+                    <td></td>
+                    <td>Joe Liu</td>
+                    <td>151-846-5367</td>
+                </tr>
+                <tr>
+                    <td>10007</td>
+                    <td>Oliver</td>
+                    <td>Johnson</td>
+                    <td>1976-07-31</td>
+                    <td>M</td>
+                    <td>92</td>
+                    <td>976-428-6396/td>
+                    <td>2022-04-14</td>
+                    <td>Alcoholic Cardiomyopathy and Heart Failure</td>
+                    <td>Possess a pacemaker</td>
+                    <td>Zack Johnson</td>
+                    <td>137-893-7908</td>
+                </tr>
+                <tr>
+                    <td>10008</td>
+                    <td>Emma</td>
+                    <td>Martin</td>
+                    <td>2005-02-01</td>
+                    <td>F</td>
+                    <td>60</td>
+                    <td>213-192-5344</td>
+                    <td>2022-04-14</td>
+                    <td>Peripartum Cardiomyopathy (PPCM)</td>
+                    <td></td>
+                    <td>Jona Martin</td>
+                    <td>616-641-4770</td>
+                </tr>
+                <tr>
+                    <td>10009</td>
+                    <td>Evelyn</td>
+                    <td>Lopez</td>
+                    <td>2008-12-26</td>
+                    <td>F</td>
+                    <td>37</td>
+                    <td>445-917-4501</td>
+                    <td>2022-04-14</td>
+                    <td>Acute Decompensated Heart Failure (ADHF)</td>
+                    <td>Allergies to aspirin and other NSAIDs</td>
+                    <td>Martina Lopez</td>
+                    <td>832-111-3081 ​</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
